@@ -1,11 +1,8 @@
 true
-	   MVI A,5A
-	   MVI B,1F
-	   ANA B
-	   MVI A,5A
-	   ORA B
-	   MVI A,5A
-	   XRA B
-	   MVI A,5A
-	   CMA
+	   LDA 2050
+	   RLC
+	   RLC
+	   RLC
+	   RLC
+	   STA 3050
 	   HLT
