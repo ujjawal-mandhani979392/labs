@@ -1,8 +1,10 @@
 true
-	   LDA 2050
-	   RLC
-	   RLC
-	   RLC
-	   RLC
-	   STA 3050
+	   MVI C,05
+	   LXI H,3000
+	   LXI D,3500
+	   MOV A,M
+	   STAX D
+	   INX H
+	   INX D
+	   JNZ 2008
 	   HLT
