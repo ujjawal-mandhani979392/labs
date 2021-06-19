@@ -1,20 +1,18 @@
 true
-	   MVI A,06
-	
-	   MOV E,A
+	   LXI H,2200
+	   LXI D,2300
+	   MVI C,32
 
-LOOP1:	   DCR E
-	   JZ END
-	   MOV D,E
-	   MVI H,00
-	   MVI L,00
+BACK:	   MOV A,M
+	   ANI 01
+	   JNZ SKIP
+	   MOV A,M
+	   STAX D
+	   INX D
 
-LOOP2:	   DAD B
-	   DCR D
-	   JNZ LOOP2
-	   MOV B,H
-	   MOV C,L
-	   JMP LOOP1
-
-END:	   HLT
+SKIP:	   INX H
+	   DCR C
+	   JNZ BACK
 	   HLT
+# ORG 2200H
+# DB 06H,06H,05H,04H,01H,02H,03H,08H,07H,09H
