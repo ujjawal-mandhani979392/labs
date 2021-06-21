@@ -1,18 +1,21 @@
 true
-	   LXI H,2200
-	   LXI D,2300
-	   MVI C,32
-
-BACK:	   MOV A,M
-	   ANI 01
-	   JNZ SKIP
-	   MOV A,M
-	   STAX D
-	   INX D
-
-SKIP:	   INX H
-	   DCR C
-	   JNZ BACK
+LDA 2000
+	   MOV B,A
+	   ANI 0F
+	   MOV C,A
+	   MOV A,B
+	   ANI F0
+	   RLC
+	   RLC
+	   RLC
+	   RLC
+	   CMP C
+	   JZ LABEL
+	   MVI A,FF
+	   STA 3021
 	   HLT
-# ORG 2200H
-# DB 06H,06H,05H,04H,01H,02H,03H,08H,07H,09H
+
+LABEL:	   MVI A,00
+	   STA 3020
+	   HLT
+	
